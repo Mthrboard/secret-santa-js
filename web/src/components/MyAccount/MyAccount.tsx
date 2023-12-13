@@ -2,15 +2,16 @@ import { useState } from 'react'
 
 import { AnimatePresence, motion } from 'framer-motion'
 
-import Avatar from '../Avatar/Avatar'
+import AccountDetailsCell from 'src/components/AccountDetailsCell'
+
 import Icon from '../Icon/Icon'
 
-const MyAccount = () => {
+const MyAccount = ({ id }) => {
   const [isDropdownShowing, setIsDropdownShowing] = useState(false)
-
   const toggleDropdown = () => {
     setIsDropdownShowing((prevValue) => !prevValue)
   }
+  console.log(id)
 
   return (
     <div className="relative dark:text-white">
@@ -18,16 +19,7 @@ const MyAccount = () => {
         <motion.div animate={{ rotate: isDropdownShowing ? 180 : 0 }}>
           <Icon id="chevron" />
         </motion.div>
-        <Avatar
-          avatar="https://picsum.photos/seed/1701239203355/300/300"
-          alt="Amy"
-        />
-        <div className="text-left">
-          <div className="text-sm">Logged in as</div>
-          <div className="text-lg">
-            <strong>Amy Dutton</strong>
-          </div>
-        </div>
+        <AccountDetailsCell id={id} />
       </button>
 
       <AnimatePresence>

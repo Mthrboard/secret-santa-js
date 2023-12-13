@@ -1,3 +1,6 @@
+import { Toaster } from '@redwoodjs/web/dist/toast'
+
+import { useAuth } from 'src/auth'
 import Footer from 'src/components/Footer/Footer'
 import MyAccount from 'src/components/MyAccount/MyAccount'
 
@@ -6,8 +9,10 @@ type InteriorLayoutProps = {
 }
 
 const InteriorLayout = ({ children }: InteriorLayoutProps) => {
+  const { currentUser } = useAuth()
   return (
     <>
+      <Toaster />
       <main className="bg-interior">
         <aside className="col-span-4 bg-no-repeat pb-10">
           <img src="/images/bg__interior.svg" alt="" />
@@ -17,9 +22,9 @@ const InteriorLayout = ({ children }: InteriorLayoutProps) => {
             className="absolute top-[7vw] w-[25vw]"
           />
         </aside>
-        <div className="col-span-8 pr-12 pt-7">
+        <div className="relative col-span-8 pr-12 pt-7">
           <div className="flex justify-end">
-            <MyAccount />
+            <MyAccount id={currentUser.id} />
           </div>
           {children}
         </div>

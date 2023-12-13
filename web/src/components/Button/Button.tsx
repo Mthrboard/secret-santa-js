@@ -1,16 +1,22 @@
 interface ButtonProps {
   children: JSX.Element | string
   className?: string
-  handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void
+  handleClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
   size?: 'large' | 'medium' | 'small'
+  type?: 'button' | 'submit' | 'reset'
 }
 
 const Button = ({
   children,
   className = '',
-  handleClick,
+  handleClick = () => {},
   size = 'large',
+  type = 'button',
 }: ButtonProps) => {
+  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    handleClick(event)
+  }
+
   return (
     <button
       className={`
@@ -31,7 +37,8 @@ const Button = ({
           : ''
       }
       ${className}`}
-      onClick={handleClick}
+      onClick={onClick}
+      type={type}
     >
       {children}
     </button>

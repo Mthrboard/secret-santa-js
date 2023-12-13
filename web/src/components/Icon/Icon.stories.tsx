@@ -47,6 +47,12 @@ export const Close: Story = {
   },
 }
 
+export const Edit: Story = {
+  args: {
+    id: 'edit',
+  },
+}
+
 export const EyeClosed: Story = {
   args: {
     id: 'eyeClosed',

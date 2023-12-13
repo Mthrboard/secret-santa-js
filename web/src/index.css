@@ -39,8 +39,13 @@
   input[type="number"],
   input[type="tel"],
   input[type="email"],
+  input[type="date"],
   input[type="text"] {
     @apply font-sans text-2xl h-[100px] w-full px-7
+  }
+
+  body {
+    @apply overflow-x-hidden
   }
 
   textarea {
@@ -67,7 +72,7 @@
   }
 
   input[type="checkbox"] + label {
-    @apply flex items-center gap-4 font-handwriting uppercase text-3xl cursor-pointer
+    @apply flex items-center gap-4 font-handwriting uppercase text-3xl cursor-pointer dark:text-white
   }
 
   input[type="checkbox"] + label:before {
@@ -78,7 +83,7 @@
     @apply content-[''] w-10 h-10 block relative -top-1 bg-checked
   }
 
-  button[type="submit"] {
+  button[type="submit"]:not(.round-button) {
     @apply bg-supernova font-handwriting uppercase text-3xl text-black w-full rounded-full py-5;
   }
 
@@ -94,7 +99,7 @@
   }
 
   main {
-    @apply z-10 overflow-scroll relative mb-[350px];
+    @apply z-10 relative mb-[350px] overflow-hidden;
   }
 
   svg {
@@ -117,6 +122,26 @@
 
   .field {
     @apply mb-4
+  }
+
+  .auth-wrapper {
+    @apply mx-auto max-w-[660px];
+  }
+
+  .auth-form {
+    @apply mb-10;
+  }
+
+  .auth-links {
+    @apply text-center text-white;
+  }
+
+  .auth-links a {
+    @apply underline hover:no-underline;
+  }
+
+  .error-message {
+    @apply text-orangeRed block py-2;
   }
 
   .dropdown {
